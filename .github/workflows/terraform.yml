@@ -18,7 +18,7 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   #s3  bucket
   BUCKET_TF_STATE: ${{ secrets.BUCKET_TF_STATE }}
-  AWS_REGION: us-east-2
+  AWS_REGION: us-east-1
   EKS_CLUSTER: vprofile-eks
 
 jobs:
@@ -46,7 +46,10 @@ jobs:
       - name: Terraform format
         id: fmt
         run: terraform fmt -check
-
+      - name: Setup terraform with specified version on the runner
+        uses: hashicorp/setup-terraform@v2
+        with:
+        terraform_version: 1.6.3
 
       - name: Terraform validate
         id:  validate
