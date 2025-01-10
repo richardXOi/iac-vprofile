@@ -21,7 +21,7 @@ env:
   AWS_REGION: use-eat-2
   EKS_CLUSTER: vprofile-eks
 
-  jobs:
+jobs:
     terraform:
       name: "Apply terraform changes"
       run-ons: ubuntu-latest
